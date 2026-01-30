@@ -25,8 +25,17 @@ SECRET_KEY = 'django-insecure-g#dl(y=8y$96g8%343as=e!f7mu-&&-p_fw4_avc#m+2lm3wc$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
+import os
+DEBUG = os.getenv('DEBUG', 'True') == 'True'
 
+if DEBUG:
+    ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+else:
+    ALLOWED_HOSTS = [
+        'sloth.pythonanywhere.com',
+        'www.sloth.pythonanywhere.com',
+    ]
 
 # Application definition
 
